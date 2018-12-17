@@ -10,10 +10,9 @@
 
 	<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 	
-		<c:if test="${param.error != null}">
-			<div class="login-error">Incorrect username or password.</div>
-		</c:if>
-
+		<form:errors path="email" />
+		<form:errors path="password" />
+		 
 		<div class="panel panel-default">
 
 			<div class="panel-heading">
