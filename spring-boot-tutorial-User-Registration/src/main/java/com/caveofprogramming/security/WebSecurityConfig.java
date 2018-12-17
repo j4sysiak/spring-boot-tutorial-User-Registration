@@ -5,13 +5,23 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.caveofprogramming.service.SiteUserService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
+	
+	@Autowired
+	SiteUserService siteUserService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	//@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -61,17 +71,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
 //	}
 	
  
-	@Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		// @formatter:off
- 
-	    auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
-        .withUser("aa").password("aa").roles("USER").and()
-        .withUser("bb").password("bb").roles("ADMIN");
-	    
-	    // @formatter:on
-    }
+//	@Autowired
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		
+//		// @formatter:off
+// 
+//	    auth.inMemoryAuthentication().passwordEncoder(NoOpPasswordEncoder.getInstance())
+//        .withUser("aa").password("aa").roles("USER").and()
+//        .withUser("bb").password("bb").roles("ADMIN");
+//	    
+//	    // @formatter:on
+//    }
 
  
+	@Override
+	//@Autowired
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		  
+		auth.userDetailsService(siteUserService).passwordEncoder(passwordEncoder);
+	}
+	
 }
