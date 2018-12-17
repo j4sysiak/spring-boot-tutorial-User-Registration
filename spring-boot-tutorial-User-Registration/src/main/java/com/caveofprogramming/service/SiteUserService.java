@@ -35,8 +35,7 @@ public class SiteUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
 		SiteUser user = siteUserDao.findByEmail(email);
-		
-		
+		 
 		if(user == null) {
 			return null;
 		}
