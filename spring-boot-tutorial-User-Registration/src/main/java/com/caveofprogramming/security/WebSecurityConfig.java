@@ -18,7 +18,7 @@ import com.caveofprogramming.service.SiteUserService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
 	
 	@Autowired
-	SiteUserService siteUserService;
+	private SiteUserService siteUserService;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;

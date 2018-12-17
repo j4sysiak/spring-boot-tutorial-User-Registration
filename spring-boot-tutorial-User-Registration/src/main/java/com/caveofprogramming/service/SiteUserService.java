@@ -24,6 +24,7 @@ public class SiteUserService implements UserDetailsService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	 
+	
 	public void register(SiteUser user) {
 		
 		user.setPassword(passwordEncoder.encode(user.getPassword()));

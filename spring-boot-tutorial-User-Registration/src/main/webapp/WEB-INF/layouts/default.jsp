@@ -54,6 +54,7 @@
 			
 				<sec:authorize access="!isAuthenticated()">
 					<li><a href="${contextRoot}/login">Login</a></li>
+					<li><a href="${contextRoot}/register">Register</a></li>
 				</sec:authorize>
 				
 				<sec:authorize access="isAuthenticated()">
