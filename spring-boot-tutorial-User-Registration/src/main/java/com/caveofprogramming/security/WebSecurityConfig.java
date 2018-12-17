@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	//@Override
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// @formatter:off

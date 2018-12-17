@@ -45,7 +45,7 @@ public class SiteUserService implements UserDetailsService {
 		List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 		
 		String password = user.getPassword();
-		
+		 
 		return new User(email, password, auth);
 	}
 }
