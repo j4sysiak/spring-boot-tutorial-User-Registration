@@ -23,10 +23,10 @@ public class SiteUserService implements UserDetailsService {
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-	 
-	
+	  
 	public void register(SiteUser user) {
 		
+		user.setRole("ROLE_USER");
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		siteUserDao.save(user);
 	}
@@ -41,9 +41,9 @@ public class SiteUserService implements UserDetailsService {
 			return null;
 		}
 		
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		//user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
-		List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+		List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole());
 		
 		String password = user.getPassword();
 		 
