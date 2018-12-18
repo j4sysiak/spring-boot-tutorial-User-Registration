@@ -26,9 +26,9 @@ public class SiteUserService implements UserDetailsService {
 	  
 	public void register(SiteUser user) {
 		
-		user.setRole("ROLE_USER");
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		siteUserDao.save(user);
+	  user.setRole("ROLE_USER");
+	  user.setPassword(passwordEncoder.encode(user.getPassword()));
+	  siteUserDao.save(user);
 	}
 
 
