@@ -30,23 +30,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
 		
 				http
 					.authorizeRequests()
-						.antMatchers("/", "/about", "/register")
+						.antMatchers("/",
+									 "/about",
+									 "/register")
 						.permitAll()
 						.antMatchers(
 							"/js/*",
 							"/css/*",
 							"/img/*")
 						.permitAll()
-					.anyRequest()
-						.authenticated()
+					    .antMatchers("/editstatus",
+					    			 "/deletestatus",
+					    			 "/viewstatus",
+					    			 "/addstatus")
+					    .hasRole("ADMIN")
 						.and()
 					.formLogin()
 						.loginPage("/login")
 						.defaultSuccessUrl("/")
 						.permitAll()
 						.and()
-						.logout()
-						.permitAll();
+					.logout()
+						.permitAll()
+						;
 				
 		// @formatter:on
 	}
@@ -85,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter   {
 
  
 	@Override
-	@Autowired
+	//@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		  
 		auth.userDetailsService(siteUserService).passwordEncoder(passwordEncoder);
