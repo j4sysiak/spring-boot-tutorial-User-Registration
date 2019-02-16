@@ -1,4 +1,4 @@
-package com.caveofprogramming.model;
+package pl.jaceksysiak.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

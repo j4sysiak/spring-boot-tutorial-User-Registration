@@ -1,4 +1,4 @@
-package com.caveofprogramming.service;
+package pl.jaceksysiak.service;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.caveofprogramming.model.SiteUser;
-import com.caveofprogramming.model.SiteUserDao;
+import pl.jaceksysiak.model.SiteUser;
+import pl.jaceksysiak.model.SiteUserDao;
 
 @Service
 public class SiteUserService implements UserDetailsService {
